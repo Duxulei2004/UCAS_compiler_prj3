@@ -1,0 +1,542 @@
+VAR_GLOBAL RADIUS, float, 4
+VAR_GLOBAL PI, float, 4
+VAR_GLOBAL EPS, float, 4
+VAR_GLOBAL PI_HEX, float, 4
+VAR_GLOBAL HEX2, float, 4
+VAR_GLOBAL FACT, float, 4
+VAR_GLOBAL CONV1, float, 4
+VAR_GLOBAL CONV2, float, 4
+VAR_GLOBAL MAX, int, 4
+VAR_GLOBAL TWO, int, 4
+VAR_GLOBAL THREE, int, 4
+EXTERN_FUNC print_int, void, int
+EXTERN_FUNC print_float, void, float
+EXTERN_FUNC print_char, void, char
+EXTERN_FUNC get_int, int
+EXTERN_FUNC get_float, float
+EXTERN_FUNC get_char, char
+
+LABEL float_abs
+LABEL float_abs_enterpoint
+ADD_INT sp, sp, -100
+STORE_INT ra, 96, sp
+STORE_INT s0, 92, sp
+STORE_INT s1, 88, sp
+STORE_INT s2, 84, sp
+STORE_INT s3, 80, sp
+STORE_INT s4, 76, sp
+STORE_INT s5, 72, sp
+STORE_INT s6, 68, sp
+STORE_INT s7, 64, sp
+STORE_INT s8, 60, sp
+STORE_INT s9, 56, sp
+STORE_INT s10, 52, sp
+STORE_INT s11, 48, sp
+STORE_FLOAT fs1, 44, sp
+STORE_FLOAT fs2, 40, sp
+STORE_FLOAT fs3, 36, sp
+STORE_FLOAT fs4, 32, sp
+STORE_FLOAT fs5, 28, sp
+STORE_FLOAT fs6, 24, sp
+STORE_FLOAT fs7, 20, sp
+STORE_FLOAT fs8, 16, sp
+STORE_FLOAT fs9, 12, sp
+STORE_FLOAT fs10, 8, sp
+STORE_FLOAT fs11, 4, sp
+LABEL float_abs_entry
+STORE_FLOAT fa0, 0, sp
+LOAD_FLOAT v7, 0, sp
+LI v8, 0
+ICMP_NE_INT v10, v1, v8
+BNE float_abs_then, v10, x0
+JMP float_abs_else
+LABEL float_abs_then
+LOAD_FLOAT v11, 0, sp
+MOV_FLOAT fa0, v4
+LOAD_INT ra, 96, sp
+LOAD_INT s0, 92, sp
+LOAD_INT s1, 88, sp
+LOAD_INT s2, 84, sp
+LOAD_INT s3, 80, sp
+LOAD_INT s4, 76, sp
+LOAD_INT s5, 72, sp
+LOAD_INT s6, 68, sp
+LOAD_INT s7, 64, sp
+LOAD_INT s8, 60, sp
+LOAD_INT s9, 56, sp
+LOAD_INT s10, 52, sp
+LOAD_INT s11, 48, sp
+LOAD_FLOAT fs1, 44, sp
+LOAD_FLOAT fs2, 40, sp
+LOAD_FLOAT fs3, 36, sp
+LOAD_FLOAT fs4, 32, sp
+LOAD_FLOAT fs5, 28, sp
+LOAD_FLOAT fs6, 24, sp
+LOAD_FLOAT fs7, 20, sp
+LOAD_FLOAT fs8, 16, sp
+LOAD_FLOAT fs9, 12, sp
+LOAD_FLOAT fs10, 8, sp
+LOAD_FLOAT fs11, 4, sp
+ADD_INT sp, sp, 100
+RET
+LABEL float_abs_else
+JMP float_abs_merge
+LABEL float_abs_merge
+LOAD_FLOAT v12, 0, sp
+MOV_FLOAT fa0, v12
+LOAD_INT ra, 96, sp
+LOAD_INT s0, 92, sp
+LOAD_INT s1, 88, sp
+LOAD_INT s2, 84, sp
+LOAD_INT s3, 80, sp
+LOAD_INT s4, 76, sp
+LOAD_INT s5, 72, sp
+LOAD_INT s6, 68, sp
+LOAD_INT s7, 64, sp
+LOAD_INT s8, 60, sp
+LOAD_INT s9, 56, sp
+LOAD_INT s10, 52, sp
+LOAD_INT s11, 48, sp
+LOAD_FLOAT fs1, 44, sp
+LOAD_FLOAT fs2, 40, sp
+LOAD_FLOAT fs3, 36, sp
+LOAD_FLOAT fs4, 32, sp
+LOAD_FLOAT fs5, 28, sp
+LOAD_FLOAT fs6, 24, sp
+LOAD_FLOAT fs7, 20, sp
+LOAD_FLOAT fs8, 16, sp
+LOAD_FLOAT fs9, 12, sp
+LOAD_FLOAT fs10, 8, sp
+LOAD_FLOAT fs11, 4, sp
+ADD_INT sp, sp, 100
+RET
+
+LABEL float_eq
+LABEL float_eq_enterpoint
+ADD_INT sp, sp, -104
+STORE_INT ra, 100, sp
+STORE_INT s0, 96, sp
+STORE_INT s1, 92, sp
+STORE_INT s2, 88, sp
+STORE_INT s3, 84, sp
+STORE_INT s4, 80, sp
+STORE_INT s5, 76, sp
+STORE_INT s6, 72, sp
+STORE_INT s7, 68, sp
+STORE_INT s8, 64, sp
+STORE_INT s9, 60, sp
+STORE_INT s10, 56, sp
+STORE_INT s11, 52, sp
+STORE_FLOAT fs1, 48, sp
+STORE_FLOAT fs2, 44, sp
+STORE_FLOAT fs3, 40, sp
+STORE_FLOAT fs4, 36, sp
+STORE_FLOAT fs5, 32, sp
+STORE_FLOAT fs6, 28, sp
+STORE_FLOAT fs7, 24, sp
+STORE_FLOAT fs8, 20, sp
+STORE_FLOAT fs9, 16, sp
+STORE_FLOAT fs10, 12, sp
+STORE_FLOAT fs11, 8, sp
+LABEL float_eq_entry
+STORE_FLOAT fa0, 0, sp
+STORE_FLOAT fa1, 4, sp
+LOAD_FLOAT v14, 0, sp
+LOAD_FLOAT v15, 4, sp
+CALL v16, float_abs
+LA v17, EPS
+LOAD_FLOAT v19, 0, v17
+LI v20, 0
+ICMP_NE_INT v22, v5, v20
+BNE float_eq_then, v22, x0
+JMP float_eq_else
+LABEL float_eq_then
+LI v23, 1
+MOV_INT a0, v23
+LOAD_INT ra, 100, sp
+LOAD_INT s0, 96, sp
+LOAD_INT s1, 92, sp
+LOAD_INT s2, 88, sp
+LOAD_INT s3, 84, sp
+LOAD_INT s4, 80, sp
+LOAD_INT s5, 76, sp
+LOAD_INT s6, 72, sp
+LOAD_INT s7, 68, sp
+LOAD_INT s8, 64, sp
+LOAD_INT s9, 60, sp
+LOAD_INT s10, 56, sp
+LOAD_INT s11, 52, sp
+LOAD_FLOAT fs1, 48, sp
+LOAD_FLOAT fs2, 44, sp
+LOAD_FLOAT fs3, 40, sp
+LOAD_FLOAT fs4, 36, sp
+LOAD_FLOAT fs5, 32, sp
+LOAD_FLOAT fs6, 28, sp
+LOAD_FLOAT fs7, 24, sp
+LOAD_FLOAT fs8, 20, sp
+LOAD_FLOAT fs9, 16, sp
+LOAD_FLOAT fs10, 12, sp
+LOAD_FLOAT fs11, 8, sp
+ADD_INT sp, sp, 104
+RET
+LABEL float_eq_else
+LI v25, 0
+MOV_INT a0, v25
+LOAD_INT ra, 100, sp
+LOAD_INT s0, 96, sp
+LOAD_INT s1, 92, sp
+LOAD_INT s2, 88, sp
+LOAD_INT s3, 84, sp
+LOAD_INT s4, 80, sp
+LOAD_INT s5, 76, sp
+LOAD_INT s6, 72, sp
+LOAD_INT s7, 68, sp
+LOAD_INT s8, 64, sp
+LOAD_INT s9, 60, sp
+LOAD_INT s10, 56, sp
+LOAD_INT s11, 52, sp
+LOAD_FLOAT fs1, 48, sp
+LOAD_FLOAT fs2, 44, sp
+LOAD_FLOAT fs3, 40, sp
+LOAD_FLOAT fs4, 36, sp
+LOAD_FLOAT fs5, 32, sp
+LOAD_FLOAT fs6, 28, sp
+LOAD_FLOAT fs7, 24, sp
+LOAD_FLOAT fs8, 20, sp
+LOAD_FLOAT fs9, 16, sp
+LOAD_FLOAT fs10, 12, sp
+LOAD_FLOAT fs11, 8, sp
+ADD_INT sp, sp, 104
+RET
+
+LABEL error
+LABEL error_enterpoint
+ADD_INT sp, sp, -96
+STORE_INT ra, 92, sp
+STORE_INT s0, 88, sp
+STORE_INT s1, 84, sp
+STORE_INT s2, 80, sp
+STORE_INT s3, 76, sp
+STORE_INT s4, 72, sp
+STORE_INT s5, 68, sp
+STORE_INT s6, 64, sp
+STORE_INT s7, 60, sp
+STORE_INT s8, 56, sp
+STORE_INT s9, 52, sp
+STORE_INT s10, 48, sp
+STORE_INT s11, 44, sp
+STORE_FLOAT fs1, 40, sp
+STORE_FLOAT fs2, 36, sp
+STORE_FLOAT fs3, 32, sp
+STORE_FLOAT fs4, 28, sp
+STORE_FLOAT fs5, 24, sp
+STORE_FLOAT fs6, 20, sp
+STORE_FLOAT fs7, 16, sp
+STORE_FLOAT fs8, 12, sp
+STORE_FLOAT fs9, 8, sp
+STORE_FLOAT fs10, 4, sp
+STORE_FLOAT fs11, 0, sp
+LABEL error_entry
+LI v15, 101
+CALL print_char
+LI v17, 114
+CALL print_char
+LI v19, 114
+CALL print_char
+LI v20, 111
+CALL print_char
+LI v22, 114
+CALL print_char
+LI v23, 10
+CALL print_char
+LOAD_INT ra, 92, sp
+LOAD_INT s0, 88, sp
+LOAD_INT s1, 84, sp
+LOAD_INT s2, 80, sp
+LOAD_INT s3, 76, sp
+LOAD_INT s4, 72, sp
+LOAD_INT s5, 68, sp
+LOAD_INT s6, 64, sp
+LOAD_INT s7, 60, sp
+LOAD_INT s8, 56, sp
+LOAD_INT s9, 52, sp
+LOAD_INT s10, 48, sp
+LOAD_INT s11, 44, sp
+LOAD_FLOAT fs1, 40, sp
+LOAD_FLOAT fs2, 36, sp
+LOAD_FLOAT fs3, 32, sp
+LOAD_FLOAT fs4, 28, sp
+LOAD_FLOAT fs5, 24, sp
+LOAD_FLOAT fs6, 20, sp
+LOAD_FLOAT fs7, 16, sp
+LOAD_FLOAT fs8, 12, sp
+LOAD_FLOAT fs9, 8, sp
+LOAD_FLOAT fs10, 4, sp
+LOAD_FLOAT fs11, 0, sp
+ADD_INT sp, sp, 96
+RET
+
+LABEL ok
+LABEL ok_enterpoint
+ADD_INT sp, sp, -96
+STORE_INT ra, 92, sp
+STORE_INT s0, 88, sp
+STORE_INT s1, 84, sp
+STORE_INT s2, 80, sp
+STORE_INT s3, 76, sp
+STORE_INT s4, 72, sp
+STORE_INT s5, 68, sp
+STORE_INT s6, 64, sp
+STORE_INT s7, 60, sp
+STORE_INT s8, 56, sp
+STORE_INT s9, 52, sp
+STORE_INT s10, 48, sp
+STORE_INT s11, 44, sp
+STORE_FLOAT fs1, 40, sp
+STORE_FLOAT fs2, 36, sp
+STORE_FLOAT fs3, 32, sp
+STORE_FLOAT fs4, 28, sp
+STORE_FLOAT fs5, 24, sp
+STORE_FLOAT fs6, 20, sp
+STORE_FLOAT fs7, 16, sp
+STORE_FLOAT fs8, 12, sp
+STORE_FLOAT fs9, 8, sp
+STORE_FLOAT fs10, 4, sp
+STORE_FLOAT fs11, 0, sp
+LABEL ok_entry
+LI v21, 111
+CALL print_char
+LI v23, 107
+CALL print_char
+LI v25, 10
+CALL print_char
+LOAD_INT ra, 92, sp
+LOAD_INT s0, 88, sp
+LOAD_INT s1, 84, sp
+LOAD_INT s2, 80, sp
+LOAD_INT s3, 76, sp
+LOAD_INT s4, 72, sp
+LOAD_INT s5, 68, sp
+LOAD_INT s6, 64, sp
+LOAD_INT s7, 60, sp
+LOAD_INT s8, 56, sp
+LOAD_INT s9, 52, sp
+LOAD_INT s10, 48, sp
+LOAD_INT s11, 44, sp
+LOAD_FLOAT fs1, 40, sp
+LOAD_FLOAT fs2, 36, sp
+LOAD_FLOAT fs3, 32, sp
+LOAD_FLOAT fs4, 28, sp
+LOAD_FLOAT fs5, 24, sp
+LOAD_FLOAT fs6, 20, sp
+LOAD_FLOAT fs7, 16, sp
+LOAD_FLOAT fs8, 12, sp
+LOAD_FLOAT fs9, 8, sp
+LOAD_FLOAT fs10, 4, sp
+LOAD_FLOAT fs11, 0, sp
+ADD_INT sp, sp, 96
+RET
+
+LABEL assert
+LABEL assert_enterpoint
+ADD_INT sp, sp, -100
+STORE_INT ra, 96, sp
+STORE_INT s0, 92, sp
+STORE_INT s1, 88, sp
+STORE_INT s2, 84, sp
+STORE_INT s3, 80, sp
+STORE_INT s4, 76, sp
+STORE_INT s5, 72, sp
+STORE_INT s6, 68, sp
+STORE_INT s7, 64, sp
+STORE_INT s8, 60, sp
+STORE_INT s9, 56, sp
+STORE_INT s10, 52, sp
+STORE_INT s11, 48, sp
+STORE_FLOAT fs1, 44, sp
+STORE_FLOAT fs2, 40, sp
+STORE_FLOAT fs3, 36, sp
+STORE_FLOAT fs4, 32, sp
+STORE_FLOAT fs5, 28, sp
+STORE_FLOAT fs6, 24, sp
+STORE_FLOAT fs7, 20, sp
+STORE_FLOAT fs8, 16, sp
+STORE_FLOAT fs9, 12, sp
+STORE_FLOAT fs10, 8, sp
+STORE_FLOAT fs11, 4, sp
+LABEL assert_entry
+STORE_INT a0, 0, sp
+LOAD_INT v28, 0, sp
+LI v29, 0
+ICMP_EQ_INT v31, v28, v29
+LI v32, 0
+ICMP_NE_INT v34, v31, v32
+BNE assert_then, v34, x0
+JMP assert_else
+LABEL assert_then
+CALL error
+JMP assert_merge
+LABEL assert_else
+CALL ok
+JMP assert_merge
+LABEL assert_merge
+LOAD_INT ra, 96, sp
+LOAD_INT s0, 92, sp
+LOAD_INT s1, 88, sp
+LOAD_INT s2, 84, sp
+LOAD_INT s3, 80, sp
+LOAD_INT s4, 76, sp
+LOAD_INT s5, 72, sp
+LOAD_INT s6, 68, sp
+LOAD_INT s7, 64, sp
+LOAD_INT s8, 60, sp
+LOAD_INT s9, 56, sp
+LOAD_INT s10, 52, sp
+LOAD_INT s11, 48, sp
+LOAD_FLOAT fs1, 44, sp
+LOAD_FLOAT fs2, 40, sp
+LOAD_FLOAT fs3, 36, sp
+LOAD_FLOAT fs4, 32, sp
+LOAD_FLOAT fs5, 28, sp
+LOAD_FLOAT fs6, 24, sp
+LOAD_FLOAT fs7, 20, sp
+LOAD_FLOAT fs8, 16, sp
+LOAD_FLOAT fs9, 12, sp
+LOAD_FLOAT fs10, 8, sp
+LOAD_FLOAT fs11, 4, sp
+ADD_INT sp, sp, 100
+RET
+
+LABEL assert_not
+LABEL assert_not_enterpoint
+ADD_INT sp, sp, -100
+STORE_INT ra, 96, sp
+STORE_INT s0, 92, sp
+STORE_INT s1, 88, sp
+STORE_INT s2, 84, sp
+STORE_INT s3, 80, sp
+STORE_INT s4, 76, sp
+STORE_INT s5, 72, sp
+STORE_INT s6, 68, sp
+STORE_INT s7, 64, sp
+STORE_INT s8, 60, sp
+STORE_INT s9, 56, sp
+STORE_INT s10, 52, sp
+STORE_INT s11, 48, sp
+STORE_FLOAT fs1, 44, sp
+STORE_FLOAT fs2, 40, sp
+STORE_FLOAT fs3, 36, sp
+STORE_FLOAT fs4, 32, sp
+STORE_FLOAT fs5, 28, sp
+STORE_FLOAT fs6, 24, sp
+STORE_FLOAT fs7, 20, sp
+STORE_FLOAT fs8, 16, sp
+STORE_FLOAT fs9, 12, sp
+STORE_FLOAT fs10, 8, sp
+STORE_FLOAT fs11, 4, sp
+LABEL assert_not_entry
+STORE_INT a0, 0, sp
+LOAD_INT v32, 0, sp
+LI v33, 0
+ICMP_NE_INT v35, v32, v33
+BNE assert_not_then, v35, x0
+JMP assert_not_else
+LABEL assert_not_then
+CALL error
+JMP assert_not_merge
+LABEL assert_not_else
+CALL ok
+JMP assert_not_merge
+LABEL assert_not_merge
+LOAD_INT ra, 96, sp
+LOAD_INT s0, 92, sp
+LOAD_INT s1, 88, sp
+LOAD_INT s2, 84, sp
+LOAD_INT s3, 80, sp
+LOAD_INT s4, 76, sp
+LOAD_INT s5, 72, sp
+LOAD_INT s6, 68, sp
+LOAD_INT s7, 64, sp
+LOAD_INT s8, 60, sp
+LOAD_INT s9, 56, sp
+LOAD_INT s10, 52, sp
+LOAD_INT s11, 48, sp
+LOAD_FLOAT fs1, 44, sp
+LOAD_FLOAT fs2, 40, sp
+LOAD_FLOAT fs3, 36, sp
+LOAD_FLOAT fs4, 32, sp
+LOAD_FLOAT fs5, 28, sp
+LOAD_FLOAT fs6, 24, sp
+LOAD_FLOAT fs7, 20, sp
+LOAD_FLOAT fs8, 16, sp
+LOAD_FLOAT fs9, 12, sp
+LOAD_FLOAT fs10, 8, sp
+LOAD_FLOAT fs11, 4, sp
+ADD_INT sp, sp, 100
+RET
+
+LABEL main
+LABEL main_enterpoint
+ADD_INT sp, sp, -20
+STORE_INT ra, 16, sp
+LABEL main_entry
+LA v57, float_const0
+LOAD_FLOAT v59, 0, v57
+STORE_FLOAT v59, 0, sp
+LI v60, 0
+ADD_INT v61, sp, 0
+ADD_INT v62, v61, v60
+LA v63, PI
+LOAD_FLOAT v65, 0, v63
+LA v66, RADIUS
+LOAD_FLOAT v68, 0, v66
+LA v69, RADIUS
+LOAD_FLOAT v71, 0, v69
+STORE_FLOAT v5, 0, v62
+LA v72, float_const1
+LOAD_FLOAT v74, 0, v72
+STORE_FLOAT v74, 4, sp
+LI v75, 0
+ADD_INT v76, sp, 4
+ADD_INT v77, v76, v75
+LOAD_FLOAT v78, 4, sp
+LA v79, PI_HEX
+LOAD_FLOAT v81, 0, v79
+LA v82, RADIUS
+LOAD_FLOAT v84, 0, v82
+STORE_FLOAT v11, 0, v77
+LA v85, float_const1
+LOAD_FLOAT v87, 0, v85
+STORE_FLOAT v87, 8, sp
+LI v87, 0
+ADD_INT v88, sp, 8
+ADD_INT v89, v88, v87
+LA v90, PI
+LOAD_FLOAT v92, 0, v90
+LOAD_FLOAT v93, 8, sp
+LA v94, RADIUS
+LOAD_FLOAT v96, 0, v94
+STORE_FLOAT v17, 0, v89
+LI v97, 0
+STORE_INT v97, 12, sp
+LI v99, 0
+ADD_INT v100, sp, 12
+ADD_INT v101, v100, v99
+LA v102, TWO
+LOAD_INT v104, 0, v102
+LA v105, THREE
+LOAD_INT v107, 0, v105
+ADD_INT v21, v104, v107
+STORE_INT v21, 0, v101
+LA v108, HEX2
+LOAD_FLOAT v110, 0, v108
+LA v111, FACT
+LOAD_FLOAT v113, 0, v111
+CALL v114, float_eq
+CALL assert_not
+LI v115, 0
+MOV_INT a0, v115
+LOAD_INT ra, 16, sp
+ADD_INT sp, sp, 20
+RET
+
